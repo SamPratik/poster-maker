@@ -1,6 +1,9 @@
 <?php
 // require __DIR__.'/../vendor/autoload.php';
 require 'vendor/autoload.php';
+$name = $_POST['name'];
+$story = $_POST['story'];
+$template = $_POST['template'];
 
 use GDText\Box;
 use GDText\Color;
@@ -8,7 +11,7 @@ use GDText\Color;
 // $im = imagecreatetruecolor(500, 500);
 // $backgroundColor = imagecolorallocate($im, 0, 18, 64);
 // imagefill($im, 0, 0, $backgroundColor);
-$im = imagecreatefromjpeg('images/template_1.jpg');
+$im = imagecreatefromjpeg($template);
 
 // $box = new Box($im);
 // $box->setFontFace(__DIR__.'/Franchise-Bold-hinted.ttf'); // http://www.dafont.com/franchise.font
@@ -40,6 +43,5 @@ $box->draw("Samiul Alim Pratik");
 // header("Content-type: image/png");
 imagepng($im, "save-images/download.jpg");
 imagedestroy($im);
-
-echo "<img src='save-images/download.jpg' alt=''>"
+echo "<img src='save-images/download.jpg' style='width:100%'>"
 ?>

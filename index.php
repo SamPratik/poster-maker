@@ -27,7 +27,8 @@
       <form class="">
         <div class="form-group">
           <label for="sel1">Select Template:</label>
-          <select class="form-control" id="template" name="template">
+          <select class="form-control" id="template" name="template" onchange="generate_image()">
+            <option value="" selected disabled>Select a template</option>
             <option value="images/template_1.jpg">Template 1</option>
             <option value="images/template_2.jpg">Template 2</option>
             <option value="images/template_3.jpg">Template 3</option>
@@ -37,23 +38,48 @@
         </div>
         <div class="form-group">
           <label for="">Name</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <input type="text" class="form-control" id="name" name="name" onkeyup="generate_image()">
         </div>
         <label for="">Story</label>
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <textarea id="story" name="story" rows="5" style="width:100%;"></textarea>
+          <textarea id="story" name="story" rows="5" style="width:100%;" onkeyup="generate_image()"></textarea>
         </div><br>
         <div class="form-group text-center">
           <input type="submit" class="btn btn-primary" value="Save Image" id="">
         </div>
       </form>
     </div>
-    <div class="col-md-8" style="background-color:black;">
+    <div class="col-md-8" style="background-color:black;" id="imgContainer">
       <img src="save-images/download.jpg" style="width:100%" alt="">
     </div>
   </div>
 </div>
+
+<script>
+  function generate_image() {
+    var name = $("#name").val();
+    var story = $("#story").val();
+    var template = $("#template").val();
+
+    // console.log(name);
+    // console.log(story);
+    // console.log(template);
+
+    $.post(
+      'generate_image.php',
+      {
+        name: name,
+        story: story,
+        template: template
+      },
+      function(data) {
+        // console.log(data);
+        $("#imgContainer").html(data);
+      }
+    );
+  }
+</script>
 
 </body>
 </html>
