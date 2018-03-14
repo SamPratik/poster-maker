@@ -5,8 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style media="screen">
+    .active {
+      color: blue;
+    }
+  </style>
 </head>
 <body>
 
@@ -42,7 +49,7 @@
         </div>
         <label for="">Story</label>
         <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <span class="input-group-addon" onclick="toggleCenter()"><i class="fas fa-align-center" id="centerAlignIcon"></i></span>
           <textarea id="story" name="story" rows="5" style="width:100%;" oninput="generate_image()" onblur="generate_image()"></textarea>
         </div><br>
         <div class="form-group text-center">
@@ -69,7 +76,7 @@
     // console.log(story);
     // console.log(template);
 
-    // sending ajax request with inputs...
+    // sending ajax request with inputs to generate an image...
     $.post(
       'generate_image.php',
       {
@@ -82,6 +89,10 @@
         document.getElementById('poster').src = template;
       }
     );
+  }
+
+  function toggleCenter() {
+    $("#centerAlignIcon").toggleClass('active');
   }
 </script>
 
