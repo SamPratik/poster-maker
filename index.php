@@ -38,18 +38,20 @@
         </div>
         <div class="form-group">
           <label for="">Name</label>
-          <input type="text" class="form-control" id="name" name="name" onkeyup="generate_image()">
+          <input type="text" class="form-control" id="name" name="name" oninput="generate_image()">
         </div>
         <label for="">Story</label>
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <textarea id="story" name="story" rows="5" style="width:100%;" onkeyup="generate_image()"></textarea>
+          <textarea id="story" name="story" rows="5" style="width:100%;" oninput="generate_image()" onblur="generate_image()"></textarea>
         </div><br>
         <div class="form-group text-center">
           <a href="save-images/download.jpg" class="btn btn-primary" value="Save Image" id="" download>Save Image</a>
         </div>
       </form>
     </div>
+
+    <!-- Shoing the template -->
     <div class="col-md-8" style="background-color:black;" id="imgContainer">
       <img id="poster" src="save-images/download.jpg" style="width:100%" alt="">
     </div>
@@ -57,6 +59,7 @@
 </div>
 
 <script>
+  // calling this function after every change in input field...
   function generate_image() {
     var name = $("#name").val();
     var story = $("#story").val();
@@ -66,6 +69,7 @@
     // console.log(story);
     // console.log(template);
 
+    // sending ajax request with inputs...
     $.post(
       'generate_image.php',
       {
@@ -75,7 +79,7 @@
       },
       function(data) {
         console.log(data);
-        $("#imgContainer").html(data);
+        document.getElementById('poster').src = template;
       }
     );
   }

@@ -8,26 +8,16 @@ $template = $_POST['template'];
 use GDText\Box;
 use GDText\Color;
 
-// $im = imagecreatetruecolor(500, 500);
-// $backgroundColor = imagecolorallocate($im, 0, 18, 64);
-// imagefill($im, 0, 0, $backgroundColor);
-// if(isset($template)) {
+
+if(empty($template)) {
+  $im = imagecreatefromjpeg('images/template_1.jpg');
+} else {
   $im = imagecreatefromjpeg($template);
-// } else {
-//   $im = imagecreatefromjpeg('images/template_1.jpg');
-// }
+}
 
-// $box = new Box($im);
-// $box->setFontFace(__DIR__.'/Franchise-Bold-hinted.ttf'); // http://www.dafont.com/franchise.font
-// $box->setFontColor(new Color(255, 75, 140));
-// $box->setTextShadow(new Color(0, 0, 0, 50), 2, 2);
-// $box->setFontSize(40);
-// $box->setBox(20, 20, 460, 460);
-// $box->setTextAlign('left', 'top');
-// $box->draw("Franchise\nBold");
-
+// inserting text in the center of the image
 $box = new Box($im);
-$box->setFontFace('fonts/OpenSans-Regular.ttf'); // http://www.dafont.com/pacifico.font
+$box->setFontFace('fonts/OpenSans-Regular.ttf');
 $box->setFontSize(40);
 $box->setFontColor(new Color(255, 255, 255));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
@@ -35,6 +25,7 @@ $box->setBox(60, 60, 960, 960);
 $box->setTextAlign('center', 'center');
 $box->draw($story);
 
+// inserting text in the left-bottom corner of the image...
 $box = new Box($im);
 $box->setFontFace('fonts/OpenSans-Regular.ttf');
 $box->setFontSize(30);
@@ -47,5 +38,5 @@ $box->draw($name);
 // header("Content-type: image/png");
 imagepng($im, "save-images/download.jpg");
 imagedestroy($im);
-echo "<img src='save-images/download.jpg' style='width:100%'>";
+echo "success";
 ?>
