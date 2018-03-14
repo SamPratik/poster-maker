@@ -4,6 +4,8 @@ require 'vendor/autoload.php';
 $name = $_POST['name'];
 $story = $_POST['story'];
 $template = $_POST['template'];
+$pos1 = $_POST['pos1'];
+$pos2 = $_POST['pos2'];
 
 use GDText\Box;
 use GDText\Color;
@@ -22,13 +24,13 @@ $box->setFontSize(40);
 $box->setFontColor(new Color(255, 255, 255));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
 $box->setBox(60, 60, 960, 960);
-$box->setTextAlign('center', 'center');
+$box->setTextAlign($pos1, $pos2);
 $box->draw($story);
 
 // inserting text in the left-bottom corner of the image...
 $box = new Box($im);
 $box->setFontFace('fonts/OpenSans-Regular.ttf');
-$box->setFontSize(30);
+$box->setFontSize(60);
 $box->setFontColor(new Color(148, 212, 1));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
 $box->setBox(60, 60, 960, 960);

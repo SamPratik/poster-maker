@@ -12,6 +12,7 @@
   <style media="screen">
     .active {
       color: blue;
+      font-size: 20px;
     }
   </style>
 </head>
@@ -49,7 +50,7 @@
         </div>
         <label for="">Story</label>
         <div class="input-group">
-          <span class="input-group-addon" onclick="toggleCenter()"><i class="fas fa-align-center" id="centerAlignIcon"></i></span>
+          <span style="cursor:pointer;" class="input-group-addon" onclick="toggleCenter()"><i class="fas fa-align-center" id="centerAlignIcon"></i></span>
           <textarea id="story" name="story" rows="5" style="width:100%;" oninput="generate_image()" onblur="generate_image()"></textarea>
         </div><br>
         <div class="form-group text-center">
@@ -66,6 +67,8 @@
 </div>
 
 <script>
+  var position1 = 'left';
+  var position2 = 'top';
   // calling this function after every change in input field...
   function generate_image() {
     var name = $("#name").val();
@@ -82,7 +85,9 @@
       {
         name: name,
         story: story,
-        template: template
+        template: template,
+        pos1: position1,
+        pos2: position2
       },
       function(data) {
         console.log(data);
@@ -93,6 +98,15 @@
 
   function toggleCenter() {
     $("#centerAlignIcon").toggleClass('active');
+    if (position1 == 'left') {
+      position1 = 'center';
+      position2 = 'center';
+    } else {
+      position1 = 'left';
+      position2 = 'top';
+    }
+
+    generate_image();
   }
 </script>
 
