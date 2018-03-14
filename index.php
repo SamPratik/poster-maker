@@ -46,12 +46,12 @@
           <textarea id="story" name="story" rows="5" style="width:100%;" onkeyup="generate_image()"></textarea>
         </div><br>
         <div class="form-group text-center">
-          <input type="submit" class="btn btn-primary" value="Save Image" id="">
+          <a href="save-images/download.jpg" class="btn btn-primary" value="Save Image" id="" download>Save Image</a>
         </div>
       </form>
     </div>
     <div class="col-md-8" style="background-color:black;" id="imgContainer">
-      <img src="save-images/download.jpg" style="width:100%" alt="">
+      <img id="poster" src="save-images/download.jpg" style="width:100%" alt="">
     </div>
   </div>
 </div>
@@ -74,7 +74,7 @@
         template: template
       },
       function(data) {
-        // console.log(data);
+        console.log(data);
         $("#imgContainer").html(data);
       }
     );
