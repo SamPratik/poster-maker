@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Poster Maker</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -44,6 +44,10 @@
             <option value="images/template_5.jpg">Template 5</option>
           </select>
         </div>
+        <div class="well">
+          <h4 style="display:inline;">Poster Details</h4>
+          <button onclick="displayCurrImg()" style="margin-top:-5px;" class="btn btn-default pull-right" type="button">Render</button>
+        </div>
         <div class="form-group">
           <label for="">Name</label>
           <input type="text" class="form-control" id="name" name="name" oninput="generate_image()">
@@ -75,25 +79,43 @@
     var story = $("#story").val();
     var template = $("#template").val();
 
+    var fd = new FormData();
+    fd.append('name', name);
+    fd.append('story', story);
+    fd.append('template', template);
+    fd.append('pos1', position1);
+    fd.append('pos2', position2);
+
     // console.log(name);
     // console.log(story);
     // console.log(template);
 
     // sending ajax request with inputs to generate an image...
-    $.post(
-      'generate_image.php',
-      {
-        name: name,
-        story: story,
-        template: template,
-        pos1: position1,
-        pos2: position2
-      },
-      function(data) {
+    // $.post(
+    //   'generate_image.php',
+    //   {
+    //     name: name,
+    //     story: story,
+    //     template: template,
+    //     pos1: position1,
+    //     pos2: position2
+    //   },
+    //   function(data) {
+    //     console.log(data);
+    //     document.getElementById('poster').src = template;
+    //   }
+    // );
+    $.ajax({
+      url: 'generate_image.php',
+      type: 'POST',
+      data: fd,
+      contentType: false,
+      processData: false,
+      success: function(data) {
         console.log(data);
         document.getElementById('poster').src = template;
       }
-    );
+    })
   }
 
   function toggleCenter() {
@@ -107,6 +129,12 @@
     }
 
     generate_image();
+  }
+
+  function displayCurrImg() {
+    d = new Date();
+    // query string helps to clear the cached image...
+    $("#poster").attr("src", "save-images/download.jpg?"+d.getTime());
   }
 </script>
 
