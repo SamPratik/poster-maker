@@ -37,11 +37,11 @@
           <label for="sel1">Select Template:</label>
           <select class="form-control" id="template" name="template" onchange="generate_image()">
             <option value="" selected disabled>Select a template</option>
-            <option value="images/template_1.jpg">Template 1</option>
-            <option value="images/template_2.jpg">Template 2</option>
-            <option value="images/template_3.jpg">Template 3</option>
-            <option value="images/template_4.jpg">Template 4</option>
-            <option value="images/template_5.jpg">Template 5</option>
+            <option value="images/red.jpg">Red</option>
+            <option value="images/green.jpg">Green</option>
+            <option value="images/blue.jpg">Blue</option>
+            <option value="images/yellow.jpg">Yellow</option>
+            <option value="images/grey.jpg">Grey</option>
           </select>
         </div>
         <div class="well">
