@@ -10,7 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <style media="screen">
-    .active-middle {
+    .active {
       color: blue !important;
       font-size: 16px !important;
     }
@@ -66,7 +66,10 @@
         <div class="form-group">
           <!-- <i class="fas fa-align-center" id="centerAlignIcon"></i> -->
           <p>
-            <button id="middleText" class="btn btn-default" onclick="toggleCenter(event)">Middle</button>
+            <button id="middleText" class="btn btn-default" onclick="toggleMiddle(event)">Middle</button>
+            <button type="button" class="btn btn-default" onclick="alignCenter(event)"><i class="fas fa-align-center" id="centerAlignIcon"></i></button>
+            <button type="button" class="btn btn-default" onclick="alignLeft(event)"><i class="fas fa-align-left" id="leftAlignIcon"></i></button>
+            <button type="button" class="btn btn-default" onclick="alignRight(event)"><i class="fas fa-align-right" id="rightAlignIcon"></i></button>
           </p>
           <textarea id="story" name="story" rows="5" style="width:100%;" oninput="generate_image()" onblur="generate_image()"></textarea>
           <select class="form-control" id="storyFontSize" name="storyFontSize" onchange="changeFontSizeStory(this.value)">
@@ -132,17 +135,37 @@
   }
 
   // after clicking the middle button...
-  function toggleCenter(e) {
+  function toggleMiddle(e) {
     e.preventDefault();
-    $("#middleText").toggleClass('active-middle');
+    $("#middleText").toggleClass('active');
     if (position == 'top') {
-      align = 'left';
       position = 'center';
     } else {
-      align = 'left';
       position = 'top';
     }
 
+    generate_image();
+  }
+
+  // after clicking center alignment button...
+  function alignCenter(e) {
+    e.preventDefault();
+    $("#leftAlignIcon").removeClass('active');
+    $("#centerAlignIcon").toggleClass('active');
+    if(align == 'left') {
+      align = 'center';
+    } else {
+      align = 'left';
+    }
+    generate_image();
+  }
+
+  // after clicking left alignment button...
+  function alignLeft(e) {
+    e.preventDefault();
+    $("#centerAlignIcon").removeClass('active');
+    $("#leftAlignIcon").toggleClass('active');
+    align = 'left';
     generate_image();
   }
 
