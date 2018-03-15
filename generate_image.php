@@ -33,7 +33,7 @@ $box->setFontFace('fonts/OpenSans-Regular.ttf');
 $box->setFontSize(60);
 $box->setFontColor(new Color(148, 212, 1));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
-$box->setBox(60, 60, 960, 960);
+$box->setBox(0, 0, 1080, 1080);
 $box->setTextAlign('left', 'bottom');
 $box->draw($name);
 
