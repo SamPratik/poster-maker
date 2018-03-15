@@ -10,9 +10,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <style media="screen">
-    .active {
-      color: blue;
-      font-size: 20px;
+    .active-middle {
+      color: blue !important;
+      font-size: 16px !important;
     }
   </style>
 </head>
@@ -50,12 +50,35 @@
         </div>
         <div class="form-group">
           <label for="">Name</label>
-          <input type="text" class="form-control" id="name" name="name" oninput="generate_image()">
+          <input type="text" class="form-control" id="name" name="name" oninput="generate_image()"><br>
+          <select class="form-control" id="nameFontSize" name="nameFontSize" onchange="changeFontSizeName(this.value)">
+            <option value="" selected disabled>Select font size for name</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+            <option value="60">60</option>
+            <option value="70">70</option>
+            <option value="80">80</option>
+          </select>
         </div>
         <label for="">Story</label>
-        <div class="input-group">
-          <span style="cursor:pointer;" class="input-group-addon" onclick="toggleCenter()"><i class="fas fa-align-center" id="centerAlignIcon"></i></span>
+        <div class="form-group">
+          <!-- <i class="fas fa-align-center" id="centerAlignIcon"></i> -->
+          <p>
+            <button id="middleText" class="btn btn-default" onclick="toggleCenter(event)">Middle</button>
+          </p>
           <textarea id="story" name="story" rows="5" style="width:100%;" oninput="generate_image()" onblur="generate_image()"></textarea>
+          <select class="form-control" id="storyFontSize" name="storyFontSize" onchange="changeFontSizeStory(this.value)">
+            <option value="" selected disabled>Select font size for story</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+            <option value="60">60</option>
+            <option value="70">70</option>
+            <option value="80">80</option>
+          </select>
         </div><br>
         <div class="form-group text-center">
           <a href="save-images/download.jpg" class="btn btn-primary" value="Save Image" id="" download>Save Image</a>
@@ -73,6 +96,8 @@
 <script>
   var position1 = 'left';
   var position2 = 'top';
+  var nameFontSize = 40;
+  var storyFontSize = 40;
   // calling this function after every change in input field...
   function generate_image() {
     var name = $("#name").val();
@@ -85,6 +110,8 @@
     fd.append('template', template);
     fd.append('pos1', position1);
     fd.append('pos2', position2);
+    fd.append('nameFontSize', nameFontSize);
+    fd.append('storyFontSize', storyFontSize);
 
     // console.log(name);
     // console.log(story);
@@ -104,8 +131,10 @@
     })
   }
 
-  function toggleCenter() {
-    $("#centerAlignIcon").toggleClass('active');
+  // after clicking the middle button...
+  function toggleCenter(e) {
+    e.preventDefault();
+    $("#middleText").toggleClass('active-middle');
     if (position1 == 'left') {
       position1 = 'center';
       position2 = 'center';
@@ -117,10 +146,25 @@
     generate_image();
   }
 
+  // shows current condition of the image after clicking render button...
   function displayCurrImg() {
     d = new Date();
     // query string helps to clear the cached image...
     $("#poster").attr("src", "save-images/download.jpg?"+d.getTime());
+  }
+
+  // changing font size for name field...
+  function changeFontSizeName(fontSize) {
+    nameFontSize = fontSize;
+    console.log(fontSize);
+    generate_image();
+  }
+
+  // changing font size for story field...
+  function changeFontSizeStory(fontSize) {
+    storyFontSize = fontSize;
+    console.log(fontSize);
+    generate_image();
   }
 </script>
 
