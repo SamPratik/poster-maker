@@ -94,8 +94,8 @@
 </div>
 
 <script>
-  var position1 = 'left';
-  var position2 = 'top';
+  var align = 'left';
+  var position = 'top';
   var nameFontSize = 40;
   var storyFontSize = 40;
   // calling this function after every change in input field...
@@ -108,8 +108,8 @@
     fd.append('name', name);
     fd.append('story', story);
     fd.append('template', template);
-    fd.append('pos1', position1);
-    fd.append('pos2', position2);
+    fd.append('align', align);
+    fd.append('position', position);
     fd.append('nameFontSize', nameFontSize);
     fd.append('storyFontSize', storyFontSize);
 
@@ -135,12 +135,12 @@
   function toggleCenter(e) {
     e.preventDefault();
     $("#middleText").toggleClass('active-middle');
-    if (position1 == 'left') {
-      position1 = 'center';
-      position2 = 'center';
+    if (position == 'top') {
+      align = 'left';
+      position = 'center';
     } else {
-      position1 = 'left';
-      position2 = 'top';
+      align = 'left';
+      position = 'top';
     }
 
     generate_image();

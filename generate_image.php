@@ -4,8 +4,8 @@ require 'vendor/autoload.php';
 $name = $_POST['name'];
 $story = $_POST['story'];
 $template = $_POST['template'];
-$pos1 = $_POST['pos1'];
-$pos2 = $_POST['pos2'];
+$align = $_POST['align'];
+$position = $_POST['position'];
 $nameFontSize = $_POST['nameFontSize'];
 $storyFontSize = $_POST['storyFontSize'];
 
@@ -26,7 +26,7 @@ $box->setFontSize($storyFontSize);
 $box->setFontColor(new Color(255, 255, 255));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
 $box->setBox(60, 60, 960, 960);
-$box->setTextAlign($pos1, $pos2);
+$box->setTextAlign($align, $position);
 $box->draw($story);
 
 // inserting text in the left-bottom corner of the image...
