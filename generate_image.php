@@ -19,7 +19,7 @@ if(empty($template)) {
 
 // inserting text in the center of the image
 $box = new Box($im);
-$box->setFontFace('fonts/OpenSans-Regular.ttf');
+$box->setFontFace('fonts/century-gothic-regular.ttf');
 $box->setFontSize(40);
 $box->setFontColor(new Color(255, 255, 255));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
@@ -29,7 +29,7 @@ $box->draw($story);
 
 // inserting text in the left-bottom corner of the image...
 $box = new Box($im);
-$box->setFontFace('fonts/OpenSans-Regular.ttf');
+$box->setFontFace('fonts/century-gothic-regular.ttf');
 $box->setFontSize(40);
 $box->setFontColor(new Color(148, 212, 1));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
