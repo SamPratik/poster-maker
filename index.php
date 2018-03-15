@@ -91,20 +91,6 @@
     // console.log(template);
 
     // sending ajax request with inputs to generate an image...
-    // $.post(
-    //   'generate_image.php',
-    //   {
-    //     name: name,
-    //     story: story,
-    //     template: template,
-    //     pos1: position1,
-    //     pos2: position2
-    //   },
-    //   function(data) {
-    //     console.log(data);
-    //     document.getElementById('poster').src = template;
-    //   }
-    // );
     $.ajax({
       url: 'generate_image.php',
       type: 'POST',

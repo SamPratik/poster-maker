@@ -30,7 +30,7 @@ $box->draw($story);
 // inserting text in the left-bottom corner of the image...
 $box = new Box($im);
 $box->setFontFace('fonts/OpenSans-Regular.ttf');
-$box->setFontSize(60);
+$box->setFontSize(40);
 $box->setFontColor(new Color(148, 212, 1));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
 $box->setBox(0, 0, 1080, 1080);
