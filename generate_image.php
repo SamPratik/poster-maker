@@ -32,7 +32,7 @@ $box->draw($story);
 $box = new Box($im);
 $box->setFontFace('fonts/century-gothic-regular.ttf');
 $box->setFontSize($nameFontSize);
-$box->setFontColor(new Color(148, 212, 1));
+$box->setFontColor(new Color(255, 255, 255));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
 $box->setBox(0, 0, 1080, 1080);
 $box->setTextAlign('left', 'bottom');
