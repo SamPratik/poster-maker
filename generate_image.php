@@ -5,7 +5,6 @@ $name = $_POST['name'];
 $story = $_POST['story'];
 $template = $_POST['template'];
 $align = $_POST['align'];
-$position = $_POST['position'];
 $nameFontSize = $_POST['nameFontSize'];
 $storyFontSize = $_POST['storyFontSize'];
 
@@ -26,7 +25,7 @@ $box->setFontSize($storyFontSize);
 $box->setFontColor(new Color(255, 255, 255));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
 $box->setBox(60, 60, 960, 960);
-$box->setTextAlign($align, $position);
+$box->setTextAlign($align, 'center');
 $box->draw($story);
 
 // inserting text in the left-bottom corner of the image...

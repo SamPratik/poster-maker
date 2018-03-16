@@ -66,10 +66,8 @@
         <div class="form-group">
           <!-- <i class="fas fa-align-center" id="centerAlignIcon"></i> -->
           <p>
-            <button id="middleText" class="btn btn-default" onclick="toggleMiddle(event)">Middle</button>
             <button type="button" class="btn btn-default" onclick="alignCenter(event)"><i class="fas fa-align-center" id="centerAlignIcon"></i></button>
             <button type="button" class="btn btn-default" onclick="alignLeft(event)"><i class="fas fa-align-left" id="leftAlignIcon"></i></button>
-            <button type="button" class="btn btn-default" onclick="alignRight(event)"><i class="fas fa-align-right" id="rightAlignIcon"></i></button>
           </p>
           <textarea id="story" name="story" rows="5" style="width:100%;" oninput="generate_image()" onblur="generate_image()"></textarea>
           <select class="form-control" id="storyFontSize" name="storyFontSize" onchange="changeFontSizeStory(this.value)">
@@ -90,7 +88,7 @@
     </div>
 
     <!-- Shoing the template -->
-    <div class="col-md-8" style="background-color:black;" id="imgContainer">
+    <div class="col-md-8" id="imgContainer">
       <img id="poster" src="save-images/download.jpg" style="width:100%" alt="">
     </div>
   </div>
@@ -98,7 +96,6 @@
 
 <script>
   var align = 'left';
-  var position = 'top';
   var nameFontSize = 40;
   var storyFontSize = 40;
   // calling this function after every change in input field...
@@ -112,7 +109,6 @@
     fd.append('story', story);
     fd.append('template', template);
     fd.append('align', align);
-    fd.append('position', position);
     fd.append('nameFontSize', nameFontSize);
     fd.append('storyFontSize', storyFontSize);
 
@@ -134,18 +130,6 @@
     })
   }
 
-  // after clicking the middle button...
-  function toggleMiddle(e) {
-    e.preventDefault();
-    $("#middleText").toggleClass('active');
-    if (position == 'top') {
-      position = 'center';
-    } else {
-      position = 'top';
-    }
-
-    generate_image();
-  }
 
   // after clicking center alignment button...
   function alignCenter(e) {
