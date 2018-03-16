@@ -34,7 +34,7 @@ $box->setFontFace('fonts/century-gothic-regular.ttf');
 $box->setFontSize($nameFontSize);
 $box->setFontColor(new Color(255, 255, 255));
 $box->setTextShadow(new Color(0, 0, 0, 50), 0, -2);
-$box->setBox(0, 0, 1080, 1080);
+$box->setBox(25, 10, 1060, 1060);
 $box->setTextAlign('left', 'bottom');
 $box->draw($name);
 
