@@ -36,8 +36,8 @@
         <div class="form-group">
           <label for="sel1">Select Template:</label>
           <select class="form-control" id="template" name="template" onchange="generate_image()">
-            <option value="" selected disabled>Select a template</option>
-            <option value="images/red.jpg">Red</option>
+            <!-- <option value="" selected disabled>Select a template</option> -->
+            <option selected value="images/red.jpg">Red</option>
             <option value="images/green.jpg">Green</option>
             <option value="images/blue.jpg">Blue</option>
             <option value="images/yellow.jpg">Yellow</option>
@@ -62,8 +62,9 @@
         <div class="form-group">
           <!-- <i class="fas fa-align-center" id="centerAlignIcon"></i> -->
           <p>
-            <button type="button" class="btn btn-default" onclick="alignCenter(event)"><i class="fas fa-align-center" id="centerAlignIcon"></i></button>
             <button type="button" class="btn btn-default" onclick="alignLeft(event)"><i class="fas fa-align-left" id="leftAlignIcon"></i></button>
+            <button type="button" class="btn btn-default" onclick="alignCenter(event)"><i class="fas fa-align-center" id="centerAlignIcon"></i></button>
+            <button type="button" class="btn btn-default" onclick="alignRight(event)"><i class="fas fa-align-right" id="rightAlignIcon"></i></button>
           </p>
           <textarea id="story" name="story" rows="5" style="width:100%;" oninput="generate_image()" onblur="generate_image()"></textarea>
           <select class="form-control" id="storyFontSize" name="storyFontSize" onchange="changeFontSizeStory(this.value)">
@@ -133,9 +134,10 @@
   // after clicking center alignment button...
   function alignCenter(e) {
     e.preventDefault();
+    $("#rightAlignIcon").removeClass('active');
     $("#leftAlignIcon").removeClass('active');
     $("#centerAlignIcon").toggleClass('active');
-    if(align == 'left') {
+    if(align == 'left' || align == 'right') {
       align = 'center';
     } else {
       align = 'left';
@@ -147,8 +149,23 @@
   function alignLeft(e) {
     e.preventDefault();
     $("#centerAlignIcon").removeClass('active');
+    $("#rightAlignIcon").removeClass('active');
     $("#leftAlignIcon").toggleClass('active');
     align = 'left';
+    generate_image();
+  }
+
+  // after clicking right alignment button...
+  function alignRight(e) {
+    e.preventDefault();
+    $("#leftAlignIcon").removeClass('active');
+    $("#centerAlignIcon").removeClass('active');
+    $("#rightAlignIcon").toggleClass('active');
+    if(align == 'center' || align == 'left') {
+      align = 'right';
+    } else {
+      align = 'left';
+    }
     generate_image();
   }
 
