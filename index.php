@@ -44,10 +44,6 @@
             <option value="images/grey.jpg">Grey</option>
           </select>
         </div>
-        <div class="well">
-          <h4 style="display:inline;">Poster Details</h4>
-          <button onclick="displayCurrImg()" style="margin-top:-5px;" class="btn btn-default pull-right" type="button">Render</button>
-        </div>
         <div class="form-group">
           <label for="">Name</label>
           <input type="text" class="form-control" id="name" name="name" oninput="generate_image()"><br>
@@ -125,7 +121,10 @@
       processData: false,
       success: function(data) {
         console.log(data);
-        document.getElementById('poster').src = template;
+        // document.getElementById('poster').src = template;
+        d = new Date();
+        // query string helps to clear the cached image...
+        $("#poster").attr("src", "save-images/download.jpg?"+d.getTime());
       }
     })
   }
@@ -151,13 +150,6 @@
     $("#leftAlignIcon").toggleClass('active');
     align = 'left';
     generate_image();
-  }
-
-  // shows current condition of the image after clicking render button...
-  function displayCurrImg() {
-    d = new Date();
-    // query string helps to clear the cached image...
-    $("#poster").attr("src", "save-images/download.jpg?"+d.getTime());
   }
 
   // changing font size for name field...
